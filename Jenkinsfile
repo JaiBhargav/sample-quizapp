@@ -17,9 +17,9 @@ pipeline {
             steps {
                 script {
                     echo "Copying frontend files to the container..."
-                    sh "docker cp index.html ${CONTAINER_NAME}:${APP_DIR}/index.html"
-                    sh "docker cp style.css ${CONTAINER_NAME}:${APP_DIR}/style.css"
-                    sh "docker cp script.js ${CONTAINER_NAME}:${APP_DIR}/script.js"
+                    sh "sudo docker cp index.html ${CONTAINER_NAME}:${APP_DIR}/index.html"
+                    sh "sudo docker cp style.css ${CONTAINER_NAME}:${APP_DIR}/style.css"
+                    sh "sudo docker cp script.js ${CONTAINER_NAME}:${APP_DIR}/script.js"
                 }
             }
         }
@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     echo "Restarting Apache inside the container..."
-                    sh "docker exec ${CONTAINER_NAME} service apache2 restart"
+                    sh "sudo docker exec ${CONTAINER_NAME} service apache2 restart"
                 }
             }
         }
