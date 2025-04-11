@@ -1,45 +1,25 @@
 pipeline {
     agent any
-    environment {
-        CONTAINER_NAME = "deploy_container"
-        APP_DIR = "/var/www/html"
-    }
 
     stages {
-        stage('Clone Code from GitHub') {
+        stage('Clone Repo') {
             steps {
-               git branch: 'main', 
-                    url: 'https://github.com/JaiBhargav/sample-quizapp'
+                git branch: 'main', url: 'https://github.com/JaiBhargav/sample-quizapp.git'
             }
         }
 
-        stage('Copy Files to Apache Container') {
-            steps {
-                script {
-                    echo "Copying frontend files to the container..."
-                    sh "docker cp index.html ${CONTAINER_NAME}:${APP_DIR}/index.html"
-                    sh "docker cp styles.css ${CONTAINER_NAME}:${APP_DIR}/style.css"
-                    sh "docker cp script.js ${CONTAINER_NAME}:${APP_DIR}/script.js"
-                }
-            }
-        }
-
-        stage('Restart Apache') {
+        stage('Deploy to Docker Container') {
             steps {
                 script {
-                    echo "Restarting Apache inside the container..."
-                    sh "docker exec ${CONTAINER_NAME} service apache2 restart"
+                    // Copy files into running Apache container
+                    sh 'docker cp index.html deploy_container:/var/www/html/index.html'
+                    sh 'docker cp styles.css deploy_container:/var/www/html/style.css'
+                    sh 'docker cp script.js deploy_container:/var/www/html/script.js'
+
+                    // Gracefully reload Apache without killing the container
+                    sh 'docker exec deploy_container apachectl -k graceful || true'
                 }
             }
-        }
-    }
-
-    post {
-        success {
-            echo "Deployed successfully! Check http://<your-ec2-ip>:3333"
-        }
-        failure {
-            echo "Deployment failed. Check console output for errors."
         }
     }
 }
