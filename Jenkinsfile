@@ -18,7 +18,7 @@ pipeline {
                 script {
                     echo "Copying frontend files to the container..."
                     sh "docker cp index.html ${CONTAINER_NAME}:${APP_DIR}/index.html"
-                    sh "docker cp style.css ${CONTAINER_NAME}:${APP_DIR}/style.css"
+                    sh "docker cp styles.css ${CONTAINER_NAME}:${APP_DIR}/style.css"
                     sh "docker cp script.js ${CONTAINER_NAME}:${APP_DIR}/script.js"
                 }
             }
