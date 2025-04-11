@@ -13,7 +13,7 @@ pipeline {
                 script {
                     // Copy files into running Apache container
                     sh 'docker cp index.html deploy_container:/var/www/html/index.html'
-                    sh 'docker cp styles.css deploy_container:/var/www/html/style.css'
+                    sh 'docker cp styles.css deploy_container:/var/www/html/styles.css'
                     sh 'docker cp script.js deploy_container:/var/www/html/script.js'
 
                     // Gracefully reload Apache without killing the container
