@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        CONTAINER_NAME = "deploycontainer"
+        CONTAINER_NAME = "deploy_container"
         APP_DIR = "/var/www/html"
     }
 
