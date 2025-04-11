@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <nav>
+            <div class="logo">QuizApp</div>
+            <div class="nav-links">
+                <a href="#" class="active">Home</a>
+                <a href="#">Leaderboard</a>
+                <a href="#">About</a>
+            </div>
+        </nav>
+        
+        <main>
+            <section class="hero">
+                <h1>Simple Quiz App</h1>
+                <p>Test your technical knowledge today</p>
+            </section>
+            
+            <section class="quiz-cards">
+                <div class="quiz-card" data-topic="aws">
+                    <div class="card-content">
+                        <h2>AWS Certification</h2>
+                        <p>Test your Amazon Web Services knowledge</p>
+                        <button class="start-quiz">Start Quiz</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-card" data-topic="webdev">
+                    <div class="card-content">
+                        <h2>Web Development</h2>
+                        <p>HTML, CSS, JavaScript fundamentals</p>
+                        <button class="start-quiz">Start Quiz</button>
+                    </div>
+                </div>
+                
+                <div class="quiz-card" data-topic="devops">
+                    <div class="card-content">
+                        <h2>DevOps</h2>
+                        <p>CI/CD, Docker, Kubernetes and more</p>
+                        <button class="start-quiz">Start Quiz</button>
+                    </div>
+                </div>
+            </section>
+            
+            <div id="quiz-screen" class="hidden">
+                <div class="quiz-header">
+                    <div class="timer">30</div>
+                    <div class="score">Score: <span>0</span></div>
+                </div>
+                <div class="question-container">
+                    <h2 id="question-text"></h2>
+                    <div id="options-container"></div>
+                </div>
+                <button id="next-btn" class="hidden">Next Question</button>
+            </div>
+            
+            <div id="results-screen" class="hidden">
+                <h2>Quiz Completed!</h2>
+                <div class="result-card">
+                    <p>Your score: <span id="final-score">0</span>/10</p>
+                    <p id="result-message"></p>
+                </div>
+                <button id="restart-btn">Restart Quiz</button>
+                <button id="home-btn">Choose Another Quiz</button>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,294 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #212529;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+
+nav {
+    background-color: rgba(255,255,255,0.8);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4361ee;
+}
+
+.nav-links a {
+    margin-left: 1.5rem;
+    text-decoration: none;
+    color: #212529;
+    font-weight: 500;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: #4361ee;
+}
+
+.hero {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #3a0ca3;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #212529;
+    opacity: 0.8;
+}
+
+
+.quiz-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.quiz-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    height: 250px;
+    position: relative;
+    color: white;
+}
+
+.quiz-card:hover {
+    transform: translateY(-5px);
+}
+
+.quiz-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.quiz-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.quiz-card p {
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.start-quiz {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    align-self: flex-start;
+}
+
+.start-quiz:hover {
+    background-color: #3a0ca3;
+}
+
+#quiz-screen {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.timer {
+    background-color: #212529;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.score {
+    font-weight: 600;
+}
+
+.score span {
+    color: #4361ee;
+}
+
+.question-container {
+    margin-bottom: 2rem;
+}
+
+#question-text {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#options-container {
+    display: grid;
+    gap: 1rem;
+}
+
+.option-btn {
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    background: white;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.option-btn:hover {
+    border-color: #4895ef;
+}
+
+.option-btn.correct {
+    background-color: #4cc9f0;
+    color: white;
+    border-color: #4cc9f0;
+}
+
+.option-btn.wrong {
+    background-color: #f72585;
+    color: white;
+    border-color: #f72585;
+}
+
+#next-btn {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.3s;
+}
+
+#next-btn:hover {
+    background-color: #3a0ca3;
+}
+
+
+#results-screen {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.result-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e2e8f0 100%);
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+}
+
+#final-score {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #4361ee;
+}
+
+#result-message {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    color: #212529;
+}
+
+#restart-btn, #home-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s;
+}
+
+#restart-btn {
+    background-color: #4361ee;
+    color: white;
+}
+
+#home-btn {
+    background-color: white;
+    color: #4361ee;
+    border: 2px solid #4361ee;
+}
+
+#restart-btn:hover {
+    background-color: #3a0ca3;
+}
+
+#home-btn:hover {
+    background-color: #4361ee;
+    color: white;
+}
+
+
+.hidden {
+    display: none !important;
+}
+
+.quiz-card[data-topic="aws"] {
+    background: url('https://images.unsplash.com/photo-1539628399213-d6aa89c93074?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1MTUzNXwwfDF8c2VhcmNofDN8fCUyMlF1aXolMjJ8ZW58MHx8fHwxNzQzMDEyNTYzfDA&ixlib=rb-4.0.3&q=80&w=1080') center/cover;
+}
+
+.quiz-card[data-topic="webdev"] {
+    background: url('https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80') center/cover;
+}
+
+.quiz-card[data-topic="devops"] {
+    background: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
+}
