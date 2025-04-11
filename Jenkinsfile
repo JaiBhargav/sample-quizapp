@@ -8,7 +8,8 @@ pipeline {
     stages {
         stage('Clone Code from GitHub') {
             steps {
-                git 'https://github.com/JaiBhargav/sample-quizapp.git'
+               git branch: 'main', 
+                    url: 'https://github.com/JaiBhargav/sample-quizapp'
             }
         }
 
